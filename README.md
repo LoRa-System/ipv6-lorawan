@@ -10,12 +10,11 @@
 
 <br>
 
-## Stack
+## 📋 Architecture
 
-그림 바꾸기
-
-![image](https://user-images.githubusercontent.com/47745785/123192298-8f2ec500-d4dd-11eb-9872-041a90e1cd3f.png)
-
+<p align="center">
+<img alt="character" width="700" src="./assets/images/architecture.png" />
+</p>
 
 * 엔드 디바이스, 게이트웨이, 네트워크서버, 애플리케이션서버(네트워크 서버와 통합)를 구축하여 lorawan 환경 구축합니다.
 * 애플리케이션 서버의 MQTT 프로토콜을 SCHC를 통해 IPv6 패킷으로 변환하게됩니다.
