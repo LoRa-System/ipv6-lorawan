@@ -33,9 +33,9 @@
    * [네트워크서버 및 애플리케이션서버](./docs/lorawan_chirpstack.md)
 2. [IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포를 통해 IPv6 환경 구축하기
    * [앤드디바이스](./docs/ipv6_endevice.md)
-   * [boarder-router]()
+   * [border-router]()
 
-**구성도 바꾸기, boarder-router작성, chirpstack 네트워크서버 설정 사진 및 설명**
+**구성도 바꾸기, border-router작성, chirpstack 네트워크서버 설정 사진 및 설명**
 
 <br>
 <br>
