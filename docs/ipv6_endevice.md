@@ -48,7 +48,7 @@ git clone https://github.com/aenrbes/IPv6-over-LoRaWAN.git
 
 chirpstack 네트워크 서버에서 엔드디바이스의 정보를 넣는칸에 LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY만 있다. 이 두가지만 네트워크 서버랑 맞춰주기만 하면 동작한다. 
 
-LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에서 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md/#applications으로-들어가서-device-부분)
+LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에서 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md)에 Chirpstack 애플리케이션 서버 페이지 설정하는방법 부분의 Device쪽을 참고하면된다. 
 
 hello-world.hex를 만들기위해 컴파일하자. 
 

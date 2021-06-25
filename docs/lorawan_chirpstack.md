@@ -217,7 +217,7 @@ Gateway name, Gateway description을 원하는대로 써주고, Gateway ID를 [g
 
 ![image](../assets/images/chirpstack-applications-devices.png)
 
-Device name, Device description을 원하는대로 써주고, Device EUI를 [Commissioning.h](https://github.com/aenrbes/IPv6-over-LoRaWAN/blob/master/arch/cpu/loramac/mac/Inc/Commissioning.h)의 LORAWAN_DEVICE_EUI랑 같게 해주면 된다. 꼭 저 키 값을 적어줘야 하는것이 아니고 예를 들어, Commissioning.h의 LORAWAN_DEVICE_EUI를 { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }로 바꿨다면, 사이트쪽 Device EUI도 { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }로 적으면 연동된다. 오른쪽 부분에 MSB인 상태에서 적어야한다. 
+Device name, Device description을 원하는대로 써주고, Device EUI를 [Commissioning.h](https://github.com/aenrbes/IPv6-over-LoRaWAN/blob/master/arch/cpu/loramac/mac/Inc/Commissioning.h)의 LORAWAN_DEVICE_EUI랑 같게 해주면 된다. 꼭 저 키 값을 적어줘야 하는것이 아니고 예를 들어, Commissioning.h의 LORAWAN_DEVICE_EUI를 { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }로 바꿨다면, 사이트쪽 Device EUI도 00, 00, 00, 00, 00, 00, 00, 00으로 적으면 연동된다. 오른쪽 부분에 MSB인 상태에서 적어야한다. 
 
 ### Device 생성한뒤 3번째 탭 KEYS(OTAA)
 

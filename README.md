@@ -6,7 +6,7 @@
 
 
 
-[IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포의 설치 방법과 구성을 설명합니다.'
+[IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포의 설치 방법과 구성을 설명합니다.
 
 <br>
 
