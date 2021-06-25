@@ -28,7 +28,9 @@ stm32cubeprogrammer프로그램을 킨 상태에서 엔드 디바이스를 보�
 
 ![image](../assets/images/cubecomplete.png)
 
-밑에 펌웨어 업데이트를 클릭하고 open in update mode를 클릭하고, 그 밑의 upgrade를 클릭하면 firmware 업데이트가 완료된다. 
+![image](../assets/images/firmwareupdate.png)
+
+펌웨어 업데이트를 클릭 후에 창이 새로뜨면 open in update mode를 클릭한뒤 그 밑에 upgrade를 클릭하면 firmware 업데이트가 완료된다. 
 
 ## ipv6-over-lorawan 레포에서 엔드 디바이스용 hex파일 만들기
 
@@ -40,13 +42,13 @@ raspberry ubuntu 에서 진행
 git clone https://github.com/aenrbes/IPv6-over-LoRaWAN.git
 ```
 
-네트워크 서버와 otaa 과정을 위해 관련된 key 값을 수정해야 한다. /home/pi/ipv6-over-LoRaWan/arch/cpu/loramac/mac/Inc/Commissioning.h 파일과 네트워크서버의 설정과 일치해야 한다. 
+네트워크 서버와 otaa 과정을 위해 관련된 key 값을 확인해야 한다. /home/pi/ipv6-over-LoRaWan/arch/cpu/loramac/mac/Inc/Commissioning.h 파일과 네트워크서버의 설정과 일치해야 한다. 
 
 ![image](../assets/images/commissioning.png)
 
 chirpstack 네트워크 서버에서 엔드디바이스의 정보를 넣는칸에 LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY만 있다. 이 두가지만 네트워크 서버랑 맞춰주기만 하면 동작한다. 
 
-LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에서 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md)
+LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에서 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md/#applications으로-들어가서-device-부분)
 
 hello-world.hex를 만들기위해 컴파일하자. 
 

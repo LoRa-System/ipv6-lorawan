@@ -10,7 +10,7 @@ Gateway Bridge, Network Server, Application Server 이렇게 3가지를 설치�
 
 [설치 문서](https://www.chirpstack.io/gateway-bridge/)
 
-Gateway Bridge, Network Server, Application Server 모두 왼쪽 카테고리의 Install → Requirement, Debian/Ubuntu를 설치하면 됩니다. 
+Gateway Bridge, Network Server, Application Server 모두 왼쪽 카테고리의 Install → Requirement, Install → Debian/Ubuntu를 설치하면 됩니다. 
 
 ```bash
 # Requirements
@@ -155,7 +155,7 @@ sudo systemctl [start|stop|restart|status] chirpstack-application-server
 ```
 
 ### 설정 파일 수정
-/etc/chirpstack-network-server/chirpstack-application-server.toml 파일을 수정해줘야함.
+/etc/chirpstack-application-server/chirpstack-application-server.toml 파일을 수정해줘야함.
 
 dsn 항목 찾아서 `dsn="postgres://chirpstack_as:dbpassword@localhost/chirpstack_as?sslmode=disable"`으로 수정. 
 
@@ -182,7 +182,9 @@ bash창 아무대서나 `openssl rand –base64 32` 명령어를 입력하고 �
 
 ![image](../assets/images/chirpstack-gateway-profiles.png)
 
-Organizations, All users, API keys, Org.dashboard, Org. users, Org. API keys는 그대로 둡니다. 
+오른쪽 하단에 ADD EXTRA CHANNEL을 누르게 되면 화면처럼 추가 input이 뜨게 된다. 
+
+왼쪽 카테고리의 Organizations, All users, API keys, Org.dashboard, Org. users, Org. API keys는 그대로 두고 service-porfiles로 갑니다. 
 
 ### Service-profiles
 
@@ -197,6 +199,30 @@ Organizations, All users, API keys, Org.dashboard, Org. users, Org. API keys는 
 
 ### Gateways 
 
-![image](../assets/images/chirpstack-device-profiles.png)
+![image](../assets/images/chirpstack-gateways.png)
 
-Gateway name, Gateway description을 원하는대로 써주고, Gateway ID를 [global_conf.json](./lorawan_gateway.md)에 썼던 gateway id를 써주면 된다. 16자리 숫자 아무거나 네트워크 서버랑 게이트웨이쪽 json 파일이랑 일치만 하면 연동된다. 화면에는 
+Gateway name, Gateway description을 원하는대로 써주고, Gateway ID를 [global_conf.json](./lorawan_gateway.md)에 썼던 gateway id를 써주면 된다. 16자리 숫자 아무거나 네트워크 서버랑 게이트웨이쪽 json 파일이랑 일치만 하면 연동된다. 화면에는 33 37 ... 으로 써져 있지만, 본인의 glbal_conf.json에서 게이트웨이를 확인하고 그걸 써주면 된다. 
+
+### Applications
+
+![image](../assets/images/chirpstack-applications.png)
+
+
+### Applications
+
+![image](../assets/images/chirpstack-applications.png)
+
+
+### Applications으로 들어가서 Device 부분
+
+![image](../assets/images/chirpstack-applications-devices.png)
+
+Device name, Device description을 원하는대로 써주고, Device EUI를 [Commissioning.h](https://github.com/aenrbes/IPv6-over-LoRaWAN/blob/master/arch/cpu/loramac/mac/Inc/Commissioning.h)의 LORAWAN_DEVICE_EUI랑 같게 해주면 된다. 꼭 저 키 값을 적어줘야 하는것이 아니고 예를 들어, Commissioning.h의 LORAWAN_DEVICE_EUI를 { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }로 바꿨다면, 사이트쪽 Device EUI도 { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }로 적으면 연동된다. 오른쪽 부분에 MSB인 상태에서 적어야한다. 
+
+### Device 생성한뒤 3번째 탭 KEYS(OTAA)
+
+![image](../assets/images/chirpstack-applications-devices-otaa.png)
+
+[Commissioning.h](https://github.com/aenrbes/IPv6-over-LoRaWAN/blob/master/arch/cpu/loramac/mac/Inc/Commissioning.h)의 LORAWAN_APPLICATION_KEY랑 같게 해주면 된다. 위에 LORAWAN_DEVICE_EUI처럼 다른 값으로 바꾸더라도 헤더 파일과 chirpstack의 값과 일치하기만 하면 연동된다.
+
+이렇게 엔드디바이스에서 Commissioning.h의 2가지를 사이트와 일치시키기만 하면 연동된다. 나머지는 바꿀 필요 없다. 
