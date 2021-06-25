@@ -20,11 +20,11 @@
 
 ![image](../assets/images/stlinkpin.png)
 
-User 라인쪽 차례로 vdd, gnd swclk, swdio를 stlink에 일치하게끔 4개의 핀을 연결한다. vdd는 3.3v.
+User 라인쪽 차례로 vdd, gnd, swclk, swdio를 stlink에 일치하게끔 4개의 핀을 연결한다. vdd는 3.3v.
 
 ![image](../assets/images/cubeprogrammer.png)
 
-stm32cubeprogrammer프로그램을 킨 상태에서 엔드 디바이스를 보면 밑의 양쪽에 user, rst버튼이 있다. 이 두개의 버튼을 누른 상태에서 컴퓨터 usb에 꼿고 프로그램의 오른쪽에 connect나 refresh 클릭하고(계속 user, rst버튼 누른상태) user, rst 버튼 누르고 있는걸 때면 연결된다. 밑은 연결된 사진.
+stm32cubeprogrammer프로그램을 킨 상태에서 엔드 디바이스를 보면 밑의 양쪽에 user, rst버튼이 있다. 이 두개의 버튼을 누른 상태에서 컴퓨터 usb에 꽂고 프로그램의 오른쪽에 connect나 refresh 클릭하고(계속 user, rst버튼 누른상태) user, rst 버튼 누르고 있는걸 때면 연결된다. 밑은 연결된 사진이다.
 
 ![image](../assets/images/cubecomplete.png)
 
@@ -46,7 +46,7 @@ git clone https://github.com/aenrbes/IPv6-over-LoRaWAN.git
 
 chirpstack 네트워크 서버에서 엔드디바이스의 정보를 넣는칸에 LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY만 있다. 이 두가지만 네트워크 서버랑 맞춰주기만 하면 동작한다. 
 
-LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md)
+LORAWAN_APPLICATION_EUI만 전부 0x00, 0x00, 0x00, ... 모두 0으로 바꾸고 나머지는 그대로 유지한다. LORAWAN_DEVICE_EUI, LORAWAN_APPLICATION_KEY는 네트워크 서버에서 맞춰줄것이다. [네트워크 서버 설정하기](./lorawan_chirpstack.md)
 
 hello-world.hex를 만들기위해 컴파일하자. 
 
@@ -86,7 +86,7 @@ make TARGET=loramac
 
 Target -> program & verify 선택 후 위에서 만든 hello-world.hex 파일을 넣고 flash 진행
 
-## stlinkv2 usb가 아닌 uart usb를 통해 엔드 디바이스 실행
+## stlink/v2 usb가 아닌 uart usb를 통해 엔드 디바이스 실행
 
 윈도우 환경에서 진행
 
