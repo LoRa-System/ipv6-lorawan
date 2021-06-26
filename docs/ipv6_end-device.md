@@ -65,11 +65,7 @@ nano ../../os/net/ipv6/schc/schc.c
 
 ![image](../assets/images/schcbefore.png)
 
-Ctrl+w(검색기능) 후 packetbuf_dataptr를 입력하고 enter를 쳐서 위의 사진에 보여지는 부분으로 이동 후 아래 사진처럼 packetbuf_ptr로 변경, Ctrl+x -> y -> enter 로 파일 저장.
-
-![image](../assets/images/schcafter.png)
-
-이런식으로 변경
+packetbuf_dataptr()를 찾아서 그대로 ()포함 다지우고 packetbuf_ptr로 변경
 
 ```bash
 # make 
