@@ -14,7 +14,13 @@
 
 # Gateway
 
+라즈베리파이3 or 4
+
+[sd카드 32기가 or 64기가](https://smartstore.naver.com/ranistore7282/products/2640705571?NaPm=ct%3Dkqde1y0i%7Cci%3Dcheckout%7Ctr%3Dppc%7Ctrx%3D%7Chk%3De00c2cc38c52b115f28b28603c0f9f6702ce0c93)
+
 [ht-m01 gateway](https://heltec.org/project/ht-m01/) 구매
 
 ht-m01 gateway [공식 문서](https://heltec-automation-docs.readthedocs.io/en/latest/gateway/ht-m01/index.html)
+
+<b> 프로젝트에서 라즈베리파이 1개면된다. 게이트웨이 연결용, 네트워크서버&앱서버, border-router모두 같은 라즈베리파이에 설치한다. 
 
