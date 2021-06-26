@@ -4,9 +4,7 @@
 <img alt="character" width="500" src="https://user-images.githubusercontent.com/47745785/114259209-52d3e880-9a07-11eb-8162-40ccd3873887.png" />
 </p>
 
-
-
-> [IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포의 설치 방법과 구성을 설명합니다.
+<b>[IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포의 설치 방법과 구성을 설명합니다.</b>
 
 <br>
 
@@ -23,18 +21,17 @@
 
 ## 📜 Category
 
-**[IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN)** 레포의 howto 7번 ping command까지의 과정을 설명합니다. 
-
-가장 먼저 라즈베리파이 [ssh 연결과 spi를 설정](./docs/raspberry.md)을 기본적으로 해주어야 합니다. 
+* 하기전에 봐야할 것
+  * [필요한 장비들](./docs/prepare.md)
+  * [라즈베리파이 ssh 접속과 spi 설정](./docs/raspberry.md)
 
 1. lorawan 환경 구축하기(앤드 디바이스는 IPV6를 포함하기 때문에 밑에서 설명)
    * [게이트웨이](./docs/lorawan_gateway.md)
    * [네트워크서버 및 애플리케이션서버](./docs/lorawan_chirpstack.md)
-2. [IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포를 통해 IPv6 환경 구축하기
-   * [앤드디바이스](./docs/ipv6_endevice.md)
-   * [border-router]()
 
-**구성도 바꾸기, border-router작성, chirpstack 네트워크서버 설정 사진 및 설명**
+2. [IPv6-over-LoRaWAN](https://github.com/aenrbes/IPv6-over-LoRaWAN) 레포의 howto 7번 ping command까지의 과정
+   * [앤드디바이스](./docs/ipv6_endevice.md)
+   * [border-router](./docs/ipv6_borderrouter.md)
 
 <br>
 <br>
