@@ -4,7 +4,7 @@
 
 ### 필요한 프로그램
 
-[cubeide 다운](../assets/downloads/cubeide.exe.zip)(예제파일을 편집하고 flash 할 수 있는 툴)
+[cubeide 다운](https://drive.google.com/file/d/17Eij9UC9eSBBQWbKmVsiL9ODc-DOLLgy/view?usp=sharing)(예제파일을 편집하고 flash 할 수 있는 툴)
 
 [예제 zip 파일](../assets/downloads/LoRaWAN_151CC_V1.0.zip)
 
