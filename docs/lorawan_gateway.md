@@ -35,7 +35,9 @@ nano /home/pi/lora/picoGW_packet_forwarder/lora_pkt_fwd/global_conf.json
 
 ![image](../assets/images/gatewayconf.png)
 
-위의 파일로 이동해서 맨 밑에 gateway_conf 안쪽의 gateway_ID 16자리의 ID가 chirpstack네트워크 서버랑 일치해야한다. 위의 그림으로 따지면 3337323334004800을 [네트워크&앱 서버 게이트웨이 설정](../docs/lorawan_chirpstack.md)의 Chirpstack 애플리케이션 서버 페이지 설정하는 방법에서 Gateways 항목을 보면 Gateway ID가 있는데 여기에 써주면 된다. 저 gateway_ID는 숫자 16자리면 어떤거든 상관없다. 네트워크&앱서버 사이트의 게이트웨이 id에 같은 값만 넣으면 연동된다. 
+위의 파일로 이동해서 맨 밑에 gateway_conf 안쪽의 gateway_ID 16자리의 ID가 chirpstack네트워크 서버랑 일치해야한다. 위의 그림으로 따지면 3337323334004800을 [네트워크&앱 서버 게이트웨이 설정](../docs/lorawan_chirpstack.md)의 Chirpstack 애플리케이션 서버 페이지 설정하는 방법에서 Gateways 항목을 보면 Gateway ID가 있는데 여기에 써주면 된다. 
+
+저 gateway_ID는 숫자 16자리면 어떤거든 상관없다. 네트워크&앱서버 사이트의 게이트웨이 id에 같은 값만 넣으면 연동된다. 
 
 
 server_address를 자신의 ip 주소를 기입해주고(gateway, networkserver가 같은 라즈베리파이임), serv_port_up, serv_port_down을 1700으로 해준다. 
