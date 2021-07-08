@@ -35,7 +35,7 @@
 
 3. [LoRaMac.c 분석](./docs/loramac_flowchart.md)
 4. heltec 공식 사이트에 있는 예제 테스트하기
-   * [LoRaWAN_151CC v1.0 테스트](./docs/LoRaWAN_151CC.md)
+   * [LoRaWAN_151CC v1.0](./docs/LoRaWAN_151CC.md)
 
 
 <br>
