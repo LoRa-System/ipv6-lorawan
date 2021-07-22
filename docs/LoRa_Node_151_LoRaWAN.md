@@ -1,1 +1,1 @@
-# LoRaWAN_151CC v1.0 예제 테스트
+# LoRa_Node_151_LoRaWAN v1.2 예제 테스트

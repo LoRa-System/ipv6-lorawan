@@ -21,9 +21,14 @@ sudo apt-get install libmosquitto-dev\
 
 ip를 네트워크 서버의 로컬 주소로 수정. border-router, 네트워크&앱서버를 한곳에 설치하기 때문에 현재 로컬 ip 주소를 적어주면된다. 
 
+이제 border-router를 설치하자. 
+
 ```bash
+git clone https://github.com/aenrbes/ipv6-over-LoRaWan.git
+cd examples/lorawan-border-router
 make
-sudo ./border-router.native -a 1 fd00::1/64
+sudo ./border-router -a 1 fd00::1/64
+(the "-a" option correspond the appID in chirpstack)
 ```
 
 ![image](../assets/images/border-router-aargs.png)
