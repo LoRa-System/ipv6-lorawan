@@ -106,9 +106,9 @@ lorawan(OTAA) 과정은 정상적으로 동작하지만 **앤드디바이스 터
 
 터미널에서 문자열을 출력하는 함수는 DebugPrintf()이고 정상 실행 시 가장 먼저 출력되는 문자열은 “Heltec lora node demo”이다. 해당 기능은 BoardInitMcu() 함수 내부에 존재하기 때문에 해당 함수 디버깅을 진행했다.
 
-디버깅을 진행한 결과, putty에 정상적으로 출력되는 v.1.2는 DebugPrintf()가 Infinite_Loop에 빠지지 않고 여러 함수들을 거쳐 정상 동작하지만, 출력되지 않는 v.1.0은 Infinite_Loop에 빠져 아무 동작도 하지 않는 것을 확인했다. 아래 사진은 각각 v.1.0과 v.1.2의 DebugPrintf() 과정 중 Uart를 사용해 문자열을 출력할 때 호출되는 함수들이다. v.1.0은 FifoNext 이후 Push하는 과정이 없고 바로 Infinite_Loop이 호출되고 해당 코드에서 멈춰 있지만, v.1.2는 FifoNext 이후 FifoPush, BoardEnablelrq 등 추가적인 함수를 호출하고 문자열이 끝날 때까지 for문이 반복 실행된다. 반복 실행이 끝난 후 BoardInitMcu() 함수가 종료되고 다음 함수들이 호출되며 앤드디바이스가 정상 동작한다.  
+디버깅을 진행한 결과, putty에 정상적으로 출력되는 v.1.2는 DebugPrintf()가 Infinite_Loop에 빠지지 않고 여러 함수들을 거쳐 정상 동작하지만, 출력되지 않는 v.1.0은 Infinite_Loop에 빠져 아무 동작도 하지 않는 것을 확인했다. 아래 코드는 각각 v.1.0과 v.1.2의 DebugPrintf() 과정 중 Uart를 사용해 문자열을 출력할 때 호출되는 함수들이다. v.1.0은 FifoNext 이후 Push하는 과정이 없고 바로 Infinite_Loop이 호출되고 해당 코드에서 멈춰 있지만, v.1.2는 FifoNext 이후 FifoPush, BoardEnablelrq 등 추가적인 함수를 호출하고 문자열이 끝날 때까지 for문이 반복 실행된다. 반복 실행이 끝난 후 BoardInitMcu() 함수가 종료되고 다음 함수들이 호출되며 앤드디바이스가 정상 동작한다.  
 
-**v1.0 예제 DebugPrintf 호출시 호출되는 내부의 함수들**
+**v1.0 예제 DebugPrintf 할 때 호출되는 내부의 함수들**
 
 ```
 UartPutChar
@@ -119,7 +119,7 @@ Infinite_Loop
 디버깅 과정중 여기서 아에 멈춰버림
 ```
 
-**v1.2 예제 DebugPrintf 호출시 호출되는 내부의 함수들**
+**v1.2 예제 DebugPrintf 할 때 호출되는 내부의 함수들**
 
 ```
 UartPutChar
@@ -137,7 +137,7 @@ for문으로 이러한 함수흐름 반복
 
 <br><br>
 
-위 문제에 대한 확실한 원인은 찾아내지 못했지만, 이후에 찾은 v.1.0과 v.1.2의 실행 과정 차이를 발견, 수정한 결과 해당 문제는 발생하지 않는다. 디버깅 결과, v.1.2는 src폴더 board.c의 BoardInitMcu() 함수의 160 ~ 166줄의 코드로 진입하지만 v.1.0은 해당 코드로 진입하지 못하는 것을 발견했다. elif 조건문으로 진입하는 조건에 대한 분석이 원활하지 않아 우선적으로 elif문을 제외하고 154줄에 161 ~ 166줄을 추가하여 조건문 없이 실행되도록 진행했다(줄 번호는 IDE 기준). 
+위 문제에 대한 확실한 원인은 찾아내지 못했지만, 이후에 찾은 v.1.0과 v.1.2의 실행 과정 차이를 발견, 수정한 결과 해당 문제는 발생하지 않는다. 디버깅 결과, v.1.2는 src폴더 board.c의 BoardInitMcu() 함수의 `#elif defined( USE_DEBUGGER ) && !defined( USB_VCP )` 코드로 진입하지만 v.1.0은 해당 코드로 진입하지 못하는 것을 발견했다. elif 조건문으로 진입하는 조건에 대한 분석이 원활하지 않아 우선적으로 elif문을 없애고, `SystemClockConfig();` 코드 뒤에다가 없앴던 코드를 추가하여 조건문 없이 실행되도록 진행했다. 
 
 **수정전**
 
@@ -245,17 +245,6 @@ void BoardInitMcu( void )
     Uart1.IrqNotify = loraMcuIrqNotify;
     UartInit( &Uart1, UART_1, UART_TX, UART_RX );
     UartConfig( &Uart1, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
-    
-#if defined( USE_USB_CDC )
-    UartInit( &UartUsb, UART_USB_CDC, NC, NC );
-    UartConfig( &UartUsb, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
-    DelayMs( 1000 ); // 1000 ms for Usb initialization
-#elif defined( USE_DEBUGGER ) && defined( USB_VCP )
-   USB_VCP_init();
-//   HAL_Delay( 3000 ); //wait for usb init
-   DebugPrintf("USB CDC init done!\r\n");
-#endif
-    DebugPrintf("Heltec lora node demo\r\n");
-    RtcInit( );
-
+    ...
+    ...
 ```
